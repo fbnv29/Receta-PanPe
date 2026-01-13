@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pan Amasado – Calculadora</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #f6d6a8, #f0b36e);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  }
+
+  h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 1 rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  input {
+    width: 95%;
+    font-size: 1.4rem;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 14px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+  }
+
+  .buttons button:hover {
+    background: #ddd;
+  }
+
+  .result {
+    margin-top: 24px;
+    background: #fafafa;
+    padding: 18px;
+    border-radius: 18px;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .result strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.75rem;
+    color: #888;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <h1>🍞 PanPe Amasado</h1>
+  <div class="subtitle">Calculadora de ingredientes</div>
+
+  <label>¿Cuántos panes qerí?</label>
+  <input type="number" id="panes" value="9" min="1" oninput="calcular()">
+
+  <div class="buttons">
+    <button onclick="setPanes(6)">6</button>
+    <button onclick="setPanes(9)">9</button>
+    <button onclick="setPanes(12)">12</button>
+    <button onclick="setPanes(24)">24</button>
+  </div>
+
+  <div class="result" id="resultado"></div>
+
+  <footer>
+    © fivc
+  </footer>
+</div>
+
+<script>
+// === FORMATEADORES INTELIGENTES ===
+
+function formatearPeso(g) {
+  if (g >= 1000) {
+    return (g / 1000).toFixed(2) + " kg";
+  } else {
+    return g.toFixed(0) + " g";
+  }
+}
+
+function formatearLiquido(ml) {
+  if (ml >= 1000) {
+    return (ml / 1000).toFixed(2) + " L";
+  } else {
+    return ml.toFixed(0) + " ml";
+  }
+}
+
+function formatearLevadura(g) {
+  const sobres = g / 10;
+  return `${g.toFixed(1)} g (${sobres.toFixed(2)} sobres)`;
+}
+
+// === INTERACCIÓN ===
+
+function setPanes(valor) {
+  document.getElementById("panes").value = valor;
+  calcular();
+}
+
+// === CÁLCULO PRINCIPAL ===
+
+function calcular() {
+  const panes = parseFloat(document.getElementById("panes").value);
+  const base = 9;
+  const factor = panes / base;
+
+  const harina = 700 * factor;
+  const levadura = 10 * factor;
+  const huevos = Math.round(1 * factor);
+  const leche = 280 * factor;
+  const agua = 70 * factor;
+  const manteca = 55 * factor;
+  const sal = 14 * factor;
+  const azucar = 14 * factor;
+
+  document.getElementById("resultado").innerHTML = `
+    <strong>Ingredientes</strong>
+    Harina: ${formatearPeso(harina)}<br>
+    Levadura: ${formatearLevadura(levadura)}<br>
+    Huevos: ${huevos}<br>
+    Leche: ${formatearLiquido(leche)}<br>
+    Agua: ${formatearLiquido(agua)}<br>
+    Manteca / Mantequilla: ${formatearPeso(manteca)}<br>
+    Sal: ${formatearPeso(sal)}<br>
+    Azúcar: ${formatearPeso(azucar)}
+  `;
+}
+
+calcular();
+</script>
+
+</body>
+</html>
