@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Bread Palette - Minimalist & Warm */
+    /* Crust color for primary actions */
+    --primary-color: #8D5524;
+    /* Darker crust for hover/text */
+    --primary-dark: #653b16;
+    /* Soft dough/flour color for background */
+    --bg-color: #f7f3eb;
+    /* White for the card */
+    --card-bg: #ffffff;
+
+    --text-main: #4a4a4a;
+    --text-muted: #8c8c8c;
+
+    --border-color: #e6e0d4;
+    --shadow-soft: 0 20px 40px rgba(141, 85, 36, 0.08);
+}
+
+body {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    /* Subtle minimalist texture or gradient if desired, keeping it clean for now */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Wrapper to help vertical alignment of the card vs footer */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.app {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    padding: 36px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 8px 0 32px;
+    font-weight: 400;
+}
+
+.input-group label {
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+}
+
+input[type="number"] {
+    width: 100%;
+    font-size: 2.2rem;
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    background: #fafafa;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: var(--primary-dark);
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(141, 85, 36, 0.1);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-pill {
+    padding: 12px 0;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    color: var(--text-main);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Outfit', sans-serif;
+}
+
+.btn-pill:hover,
+.btn-pill:active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(141, 85, 36, 0.2);
+}
+
+.result {
+    margin-top: 24px;
+    background: #fdf8f3;
+    /* Very light warm tone */
+    padding: 24px;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    border: 1px dashed var(--primary-color);
+}
+
+.result h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--primary-dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.copy-btn {
+    background: rgba(141, 85, 36, 0.1);
+    color: var(--primary-dark);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.steps {
+    margin-top: 24px;
+    background: transparent;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.steps strong {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+    color: var(--primary-dark);
+}
+
+.steps ol {
+    padding-left: 20px;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.steps li {
+    margin-bottom: 12px;
+}
+
+.steps li b {
+    color: var(--primary-dark);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    /* Ensure it stays at bottom if content is short, 
+       but here we use flex flow to just push it down naturally */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .app {
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    input[type="number"] {
+        font-size: 1.8rem;
+    }
+
+    .buttons {
+        grid-template-columns: repeat(2, 1fr);
+        /* Stack 2x2 on mobile for easier tapping */
+    }
+}

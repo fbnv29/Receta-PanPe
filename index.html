@@ -1,228 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pan Amasado – Calculadora Premium</title>
+  <!-- Icono -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🥖</text></svg>">
 
-<title>Pan Amasado – Calculadora</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🥖</text></svg>">
-
-<style>
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #f5c27a, #e9a85f);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .app {
-    background: #ffffff;
-    width: 100%;
-    max-width: 420px;
-    border-radius: 24px;
-    padding: 24px;
-    box-shadow: 0 18px 36px rgba(0,0,0,0.18);
-  }
-
-  h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 1.6rem;
-    line-height: 1.2;
-  }
-
-  .subtitle {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin: 8px 0 20px;
-  }
-
-  label {
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-
-  input {
-    width: 100%;
-    font-size: 1.4rem;
-    padding: 14px;
-    margin-top: 10px;
-    border-radius: 16px;
-    border: 1px solid #ccc;
-    text-align: center;
-    box-sizing: border-box;
-  }
-
-  .buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 12px;
-  }
-
-  .buttons button {
-    flex: 1;
-    padding: 14px 0;
-    font-size: 1.05rem;
-    border-radius: 14px;
-    border: none;
-    background: #f3e3c8;
-    cursor: pointer;
-  }
-
-  .buttons button:hover {
-    background: #ecd3aa;
-  }
-
-  .result {
-    margin-top: 24px;
-    background: #fff3e0;
-    padding: 18px;
-    border-radius: 18px;
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  .result strong {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-
-  .steps {
-    margin-top: 20px;
-    background: #fff0d9;
-    padding: 18px;
-    border-radius: 18px;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .steps strong {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.05rem;
-  }
-
-  .steps ol {
-    padding-left: 18px;
-    margin: 0;
-  }
-
-  .steps li {
-    margin-bottom: 6px;
-  }
-
-  footer {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 0.75rem;
-    color: #888;
-  }
-</style>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="app">
-  <h1>🍞 PanPe Amasado</h1>
-  <div class="subtitle">Calculadora de ingredientes</div>
+  <div class="main-wrapper">
+    <div class="app">
+      <h1>🍞 PanPe Amasado</h1>
+      <div class="subtitle">Calculadora perfecta de ingredientes</div>
 
-  <label>¿Cuántos panes querí?</label>
-  <input type="number" id="panes" value="9" min="1" oninput="calcular()">
+      <div class="input-group">
+        <label>¿Cuántos panes quieres?</label>
+        <input type="number" id="panes" value="9" min="1">
+      </div>
 
-  <div class="buttons">
-    <button onclick="setPanes(6)">6</button>
-    <button onclick="setPanes(9)">9</button>
-    <button onclick="setPanes(12)">12</button>
-    <button onclick="setPanes(24)">24</button>
-  </div>
+      <div class="buttons">
+        <button class="btn-pill" onclick="setPanes(6)">6 Panes</button>
+        <button class="btn-pill" onclick="setPanes(9)">9 Panes</button>
+        <button class="btn-pill" onclick="setPanes(12)">12 Panes</button>
+        <button class="btn-pill" onclick="setPanes(24)">24 Panes</button>
+      </div>
 
-  <div class="result" id="resultado"></div>
-  <div class="steps">
-    <strong>📝 Paso a paso</strong>
-    <ol>
-      <li>Mezcla la leche tibia con el azúcar y la levadura. Reposa 8–10 minutos hasta que espume.</li>
-      <li>En un bowl grande une la harina y la sal.</li>
-      <li>Agrega el huevo, la mezcla de levadura y la manteca derretida.</li>
-      <li>Incorpora el agua de a poco hasta formar una masa blanda.</li>
-      <li>Amasa 10–12 minutos hasta que esté suave y elástica.</li>
-      <li>Deja reposar tapada 35–45 minutos, hasta que casi duplique su volumen.</li>
-      <li>Divide en bollos, aplana, pincha con tenedor y reposa 15 minutos.</li>
-      <li>Cocina en horno a 180 °C unos 10 minutos por lado aprox.</li>
-    </ol>
+      <div class="result" id="resultado">
+        <!-- Aquí se renderiza el resultado -->
+      </div>
+
+      <div class="steps">
+        <strong>📝 Guía paso a paso</strong>
+        <ol>
+          <li><b>Activar levadura:</b> Mezcla la leche tibia, azúcar y levadura. Reposa 10 min.</li>
+          <li><b>Secos:</b> En un bowl grande une la harina con la sal.</li>
+          <li><b>Mezclar:</b> Añade huevo, mezcla de levadura y manteca derretida.</li>
+          <li><b>Hidratar:</b> Incorpora el agua poco a poco hasta tener una masa blanda.</li>
+          <li><b>Amasar:</b> Trabaja la masa 10-12 minutos (suave y elástica).</li>
+          <li><b>Leudar 1:</b> Reposa tapada 40 min (duplica volumen).</li>
+          <li><b>Formar:</b> Divide en bollos, aplana y pincha con tenedor. Reposa 15 min.</li>
+          <li><b>Hornear:</b> 180°C por 20 min aprox (dorados por ambos lados).</li>
+        </ol>
+      </div>
+    </div>
   </div>
 
   <footer>
-    © fivc
+    © fivc • Hecho con cariño 🧡
   </footer>
-</div>
 
-<script>
-// === FORMATEADORES INTELIGENTES ===
-
-function formatearPeso(g) {
-  if (g >= 1000) {
-    return (g / 1000).toFixed(2) + " kg";
-  } else {
-    return g.toFixed(0) + " g";
-  }
-}
-
-function formatearLiquido(ml) {
-  if (ml >= 1000) {
-    return (ml / 1000).toFixed(2) + " L";
-  } else {
-    return ml.toFixed(0) + " ml";
-  }
-}
-
-function formatearLevadura(g) {
-  const sobres = g / 10;
-  return `${g.toFixed(1)} g (${sobres.toFixed(2)} sobres)`;
-}
-
-// === INTERACCIÓN ===
-
-function setPanes(valor) {
-  document.getElementById("panes").value = valor;
-  calcular();
-}
-
-// === CÁLCULO PRINCIPAL ===
-
-function calcular() {
-  const panes = parseFloat(document.getElementById("panes").value);
-  const base = 9;
-  const factor = panes / base;
-
-  const harina = 700 * factor;
-  const levadura = 10 * factor;
-  const huevos = Math.round(1 * factor);
-  const leche = 280 * factor;
-  const agua = 70 * factor;
-  const manteca = 55 * factor;
-  const sal = 14 * factor;
-  const azucar = 14 * factor;
-
-  document.getElementById("resultado").innerHTML = `
-    <strong>Ingredientes</strong>
-    Harina: ${formatearPeso(harina)}<br>
-    Levadura: ${formatearLevadura(levadura)}<br>
-    Huevos: ${huevos}<br>
-    Leche: ${formatearLiquido(leche)}<br>
-    Agua: ${formatearLiquido(agua)}<br>
-    Manteca / Mantequilla: ${formatearPeso(manteca)}<br>
-    Sal: ${formatearPeso(sal)}<br>
-    Azúcar: ${formatearPeso(azucar)}
-  `;
-}
-
-calcular();
-</script>
+  <!-- Lógica -->
+  <script src="script.js"></script>
 
 </body>
+
 </html>
